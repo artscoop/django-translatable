@@ -19,7 +19,7 @@ class TranslatableModel(models.Model):
     def has_translation(self, language=None):
         """
         Returns model translation in a language having given `language` code. If no language code
-        is given, current language of Django internationalization system.
+        is given, current language of Django internationalization system is used.
         """
         language = language or get_language()
         return self.translations.filter(language=language).exists()
