@@ -49,6 +49,17 @@ class TranslatableModel(models.Model):
                         continue
         raise MissingTranslation
 
+    def translated(self, field_name, default=None, language=None, fallback=True):
+        """
+        Returns field of translation. Arguments `language` and `fallback` are
+        same as passed to `get_translation` method. If `get_translation` raises
+        `MissingTranslation` exception, `default` value is returned (None for default).
+        """
+        try:
+            self.get_translation(language=language, fallback=fallback).getattr(field_name)
+        except MissingTranslation:
+            return default
+
 def get_translation_model(translatable_model, verbose_name):
     """
     Returns a base class for translation of given `translatable_model`. Attribute `verbose_name`

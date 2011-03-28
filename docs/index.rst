@@ -128,6 +128,12 @@ Now we can play with our translations using two methods:
   If no translation was found in any of previous steps,
   ``translatable.exceptions.MissingTranslation`` is raised.
 
+* **TranslatableModel.translated(field_name, default=None, language=None, fallback=True)**
+
+  Returns field of translation. Arguments ``language`` and ``fallback`` are
+  same as passed to ``get_translation()`` method. If ``get_translation()`` raises
+  ``MissingTranslation`` exception, ``default`` value is returned (``None`` for default).
+
 .. _LANGUAGES: http://docs.djangoproject.com/en/1.3/ref/settings/#languages
 
 Admin site integration

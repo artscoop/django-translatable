@@ -6,7 +6,7 @@ from distutils.core import setup
 setup(
     name = 'django-translatable',
     packages = ['translatable',],
-    version = '0.1.0',
+    version = '0.1.1',
     description = "Django app providing simple translatable models system",
     author = "Mikołaj Siedlarek",
     author_email = 'mikolaj.siedlarek@gmail.com',
