@@ -56,7 +56,7 @@ class TranslatableModel(models.Model):
         `MissingTranslation` exception, `default` value is returned (None for default).
         """
         try:
-            getattr(self.get_translation(language=language, fallback=fallback), field_name)
+            return getattr(self.get_translation(language=language, fallback=fallback), field_name)
         except MissingTranslation:
             return default
 
