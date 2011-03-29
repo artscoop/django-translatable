@@ -16,6 +16,12 @@ class TranslatableModel(models.Model):
     def __unicode__(self):
         return unicode(self.get_translation())
 
+    def has_translations(self):
+        """
+        Checks if this model has any translation available.
+        """
+        return self.translations.exists()
+
     def has_translation(self, language=None):
         """
         Returns model translation in a language having given `language` code. If no language code
