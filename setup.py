@@ -2,15 +2,20 @@
 # -*- coding: utf-8 -*-
 
 from distutils.core import setup
+import os
+import translatable
 
 setup(
     name = 'django-translatable',
     packages = ['translatable',],
-    version = '0.1.1',
+    version = translatable.__version__,
     description = "Django app providing simple translatable models system",
+    long_description = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read(),
     author = "Mikołaj Siedlarek",
     author_email = 'mikolaj.siedlarek@gmail.com',
     url = 'https://github.com/mikoskay/django-translatable',
+    license = 'BSD License',
+    platforms = ['OS Independent',],
     install_requires=[
         'Django>=1.2',
     ],
