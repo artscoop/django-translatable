@@ -110,7 +110,11 @@ Arguments passed to ``get_translation_model()`` are ``translatable_class`` and `
 
 Last thing we have to do is to set up `LANGUAGES`_ setting. 
 
-Now we can play with our translations using two methods:
+Now we can play with our translations using these methods:
+
+* **TranslatableModel.has_translations()**
+
+  Checks if model has any translation available.
 
 * **TranslatableModel.has_translation(language=None)**
 
