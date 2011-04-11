@@ -14,11 +14,28 @@ class BaseClassesTestCase(unittest.TestCase):
         else:
             self.fail("TranslatableModel class should be an abstract model")
 
+class EmptyTranslatableModelManagerTestCase(unittest.TestCase):
+
+    def setUp(self):
+        self.model = Translatable()
+        self.model.save()
+
+    def tearDown(self):
+        self.model.delete()
+
+    def test_translated(self):
+        self.assertFalse(Translatable.objects.translated().exists())
+        self.assertFalse(Translatable.objects.translated('en').exists())
+        self.assertFalse(Translatable.objects.translated('it').exists())
+
 class EmptyTranslatableModelTestCase(unittest.TestCase):
 
     def setUp(self):
         self.model = Translatable()
         self.model.save()
+
+    def tearDown(self):
+        self.model.delete()
 
     def test_default_unicode(self):
         with self.assertRaises(translatable.exceptions.MissingTranslation):
@@ -44,6 +61,36 @@ class EmptyTranslatableModelTestCase(unittest.TestCase):
         self.assertEquals(self.model.translated('field', 31337), 31337)
         self.assertEquals(self.model.translated('field', 31337, 'en'), 31337)
         self.assertEquals(self.model.translated('field', 31337, 'en', False), 31337)
+
+class BasicTranslatableModelManagerTestCase(unittest.TestCase):
+
+    def setUp(self):
+        # Translatable
+        self.model = Translatable()
+        self.model.save()
+        # English translation
+        self.translation_en = Translation()
+        self.translation_en.model = self.model
+        self.translation_en.language = 'en'
+        self.translation_en.field = "Hello!"
+        self.translation_en.save()
+        # Spanish translation
+        self.translation_es = Translation()
+        self.translation_es.model = self.model
+        self.translation_es.language = 'es'
+        self.translation_es.field = "Hola!"
+        self.translation_es.save()
+
+    def tearDown(self):
+        self.translation_en.delete()
+        self.translation_es.delete()
+        self.model.delete()
+
+    def test_translated(self):
+        self.assertEquals(Translatable.objects.translated()[0], self.model)
+        self.assertEquals(Translatable.objects.translated('en')[0], self.model)
+        self.assertEquals(Translatable.objects.translated('es')[0], self.model)
+        self.assertFalse(Translatable.objects.translated('it').exists())
 
 class BasicTranslatableModelTestCase(unittest.TestCase):
 

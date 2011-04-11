@@ -4,11 +4,25 @@ from django.utils.translation import ugettext_lazy as _, get_language
 from django.core.exceptions import ObjectDoesNotExist
 from exceptions import MissingTranslation
 
+class TranslatableModelManager(models.Manager):
+
+    def translated(self, language=None):
+        """
+        Returns QuerySet of models having translation to given `language`.
+        If no `language` is given, returns models having any translation.
+        """
+        query_set = super(TranslatableModelManager, self).get_query_set()
+        if language:
+            return query_set.filter(translations__language=language)
+        return query_set.filter(translations__id__isnull=False)
+
 class TranslatableModel(models.Model):
     """
     Base class for translatable models. Its subclasses should contain only language-independent
     fields such as foreign keys.
     """
+
+    objects = TranslatableModelManager()
 
     class Meta:
         abstract = True
