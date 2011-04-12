@@ -6,7 +6,7 @@ Summary
 
 django-translatable is a package providing base classes for Django models
 which content should be translatable into multiple languages. This allows
-you to easily create models which translations can be created through Django 
+you to easily create models which translations can be managed through Django 
 built-in admin site.
 
 **Required Django version is 1.2 or newer.**
@@ -167,6 +167,15 @@ site, this is how out ``admin.py`` file could look like::
     admin.site.register(Post, PostAdmin)
 
 Translations are displayed in admin site as inlines below their model.
+
+Reporting bugs and proposing features
+-------------------------------------
+
+All bug reports and feature proposals should be posted on GitHub issue tracker:
+
+http://github.com/mikoskay/django-translatable/issues
+
+I know it requires registration, but trust me -- GitHub is worth it.
 
 Author and license
 ------------------
