@@ -10,8 +10,9 @@ INSTALLED_APPS = (
     # tested package
     'translatable',
     # test packages
-    'models',
     'package',
+    'models',
+    'admin',
 )
 
 # Activate code coverage report if required packages are available
