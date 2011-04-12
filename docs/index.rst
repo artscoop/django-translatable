@@ -148,30 +148,23 @@ site, this is how out ``admin.py`` file could look like::
 
     from django.contrib import admin
     from django.conf import settings
+    from translatable import admin as trans_admin
     from models import *
 
-    class CategoryTranslationInlineAdmin(admin.StackedInline):
-        verbose_name = "Translation"
-        verbose_name_plural = "Translations"
+    class CategoryTranslationInlineAdmin(trans_admin.TranslationTabularInline):
         model = CategoryTranslation
-        max_num = len(settings.LANGUAGES)
-        extra = 1
 
     class CategoryAdmin(admin.ModelAdmin):
         inlines = [CategoryTranslationInlineAdmin,]
 
-    class PostTranslationInlineAdmin(admin.StackedInline):
-        verbose_name = "Translation"
-        verbose_name_plural = "Translations"
+    class PostTranslationInlineAdmin(trans_admin.TranslationStackedInline):
         model = PostTranslation
-        max_num = len(settings.LANGUAGES)
-        extra = 1
 
     class PostAdmin(admin.ModelAdmin):
         inlines = [PostTranslationInlineAdmin,]
 
-    admin.site.register(Subject, SubjectAdmin)
-    admin.site.register(Question, QuestionAdmin)
+    admin.site.register(Category, CategoryAdmin)
+    admin.site.register(Post, PostAdmin)
 
 Translations are displayed in admin site as inlines below their model.
 
