@@ -87,7 +87,7 @@ def get_translation_model(translatable_model, verbose_name):
     """
     class TranslationModel(models.Model):
         model = models.ForeignKey(translatable_model, related_name='translations', verbose_name=verbose_name)
-        language = models.CharField(_("language"), max_length=15, choices=settings.LANGUAGES)
+        language = models.CharField(_("language"), max_length=15, choices=settings.LANGUAGES, verbose_name=_(u"Language")
         class Meta:
             abstract = True
         unique_together = (
