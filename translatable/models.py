@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _, get_language
 from django.core.exceptions import ObjectDoesNotExist
-from exceptions import MissingTranslation
+from .exceptions import MissingTranslation
 
 class TranslatableModelManager(models.Manager):
 
