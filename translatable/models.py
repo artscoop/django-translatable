@@ -30,6 +30,7 @@ class TranslatableModelManager(models.Manager):
         model = self.model.translations.field.model
         for language in translations:
             model.objects.create(**translations[language])
+        return output
 
 
 class TranslatableModel(models.Model):
