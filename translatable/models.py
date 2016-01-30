@@ -29,7 +29,7 @@ class TranslatableModelManager(models.Manager):
         output = self.create(**kwargs)
         model = self.model.translations.field.model
         for language in translations:
-            model.objects.create(**translations[language])
+            model.objects.create(model_id=output.pk, **translations[language])
         return output
 
 
