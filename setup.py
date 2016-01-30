@@ -11,13 +11,13 @@ setup(
     version = translatable.__version__,
     description = "Django app providing simple translatable models system",
     long_description = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read(),
-    author = "Mikołaj Siedlarek",
-    author_email = 'mikolaj.siedlarek@gmail.com',
-    url = 'https://github.com/mikoskay/django-translatable',
+    author = "Kossouho",
+    author_email = 'artscoop93@gmail.com',
+    url = 'https://github.com/artscoop/django-translatable',
     license = 'BSD License',
     platforms = ['OS Independent',],
     install_requires=[
-        'Django>=1.2',
+        'Django>=1.8',
     ],
     classifiers = [
         'Development Status :: 4 - Beta',
