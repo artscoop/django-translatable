@@ -16,13 +16,9 @@ Installation
 
 Just::
 
-    $ pip install django-translatable
+    $ pip install git+https://github.com/artscoop/django-translatable
 
-or::
-
-    $ easy_install django-translatable
-
-There are no additional requirements apart from Django itself.
+There are no additional requirements apart from Django itself (1.8+).
 
 Usage
 -----
@@ -37,18 +33,18 @@ Reporting bugs and proposing features
 
 All bug reports and feature proposals should be posted on GitHub issue tracker:
 
-http://github.com/mikoskay/django-translatable/issues
+http://github.com/artscoop/django-translatable/issues
 
 I know it requires registration, but trust me -- GitHub is worth it.
 
 Author and license
 ------------------
 
-**Copyright (c) 2011 Mikołaj Siedlarek <mikolaj.siedlarek@gmail.com>**
+**Copyright (c) 2016 Kossouho S. <artscoop93@gmail.com> **
 
 Distributed on terms of *3-clause BSD license* (AKA *New BSD License*
 or *Modified BSD License*). Do you know the `Django BSD license`? It's
 same.
 
-For details conslut LICENSE.txt file.
+For details please see the LICENSE.txt file.
 
