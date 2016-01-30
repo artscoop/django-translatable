@@ -16,6 +16,22 @@ class TranslatableModelManager(models.Manager):
             return query_set.filter(translations__language=language)
         return query_set.filter(translations__id__isnull=False)
 
+    def create_translated(self, translations, **kwargs):
+        """
+        Shortcut to create records of the current model, along with
+        translation data.
+        
+        :param translations: translation data, in the following form
+            {'lang': {'field': value, ..}, ..}
+        :type translations: dict
+        :param kwargs: options passed to Manager.create
+        """
+        output = self.create(**kwargs)
+        model = self.model.translations.field.model
+        for language in translations:
+            model.objects.create(**translations[language])
+
+
 class TranslatableModel(models.Model):
     """
     Base class for translatable models. Its subclasses should contain only language-independent
@@ -26,6 +42,9 @@ class TranslatableModel(models.Model):
 
     class Meta:
         abstract = True
+
+    def __init__(self, **kwargs):
+        super(TranslatableModel, self).__init__()
 
     def __unicode__(self):
         return unicode(self.get_translation())
