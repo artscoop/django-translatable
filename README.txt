@@ -9,7 +9,7 @@ which content should be translatable into multiple languages. This allows
 you to easily create models which translations can be managed through Django 
 built-in admin site.
 
-**Required Django version is 1.2 or newer.**
+**Required Django version is 1.8 or newer.**
 
 Installation
 ------------
