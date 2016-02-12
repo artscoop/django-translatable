@@ -44,8 +44,8 @@ class TranslatableModel(models.Model):
     class Meta:
         abstract = True
 
-    def __init__(self, **kwargs):
-        super(TranslatableModel, self).__init__()
+    def __init__(self, *args, **kwargs):
+        super(TranslatableModel, self).__init__(*args, **kwargs)
 
     def __unicode__(self):
         return unicode(self.get_translation())
